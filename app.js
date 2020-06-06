@@ -15,7 +15,9 @@ function add(n1, n2, showResult, phrase) {
         return result;
     }
 }
-var number1 = 5;
+var number1;
+number1 = 5;
+// number1 = "5" <-- throws an error because we specified that we want to store nubmers not strings or etc.
 var number2 = 2.8;
 var printResult = true;
 var resultPhrase = "Result is : ";
