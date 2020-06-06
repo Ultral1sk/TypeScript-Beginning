@@ -1,39 +1,37 @@
-/* Core Type NUMBER */
+/* Best option to when dealing with Objects in TypeScript */
+const person = {
+      name : "Jovan",
+      age  : 29
+};
 
-// function add( n1 :number, n2 :number ) {
-//       return n1 +  n2;
+console.log(person.name)
+
+
+/* Another option  */
+// const person: {} = {
+//       name : "Jovan",
+//       age  : 29
+// };
+// console.log(person.name)
+
+
+/* Another option  */
+// const person: object = {
+//       name : "Jovan",
+//       age  : 29
+// };
+
+// console.log(person.name)
+
+/* The object can be specified in TypeScript but it is not neccessary */
+// const person: {
+//       name : string;
+//       age  : number
+// } =  {
+//       name : 'Jovan',
+//       age : 30
 // }
 
-// const number1 = 5;
-// const number2 = 2.8
+// console.log(person.name)
 
 
-// const result = add(number1, number2);
-
-
-
-
-/* Core Type Boolean + String */
-
-function add( n1 :number, n2 :number, showResult:boolean, phrase : string ) {
-
-      const result = n1 + n2
-
-      if(showResult) {
-        console.log(phrase + result)
-
-      } else {
-            return result
-      }
-
-      
-}
-
-let number1 : number
-number1 = 5;
-// number1 = "5" <-- throws an error because we specified that we want to store nubmers not strings or etc.
-const number2 = 2.8
-const printResult = true;
-const resultPhrase = `Result is : `
-
-const result = add(number1, number2, printResult, resultPhrase);
