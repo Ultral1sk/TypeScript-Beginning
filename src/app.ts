@@ -1,11 +1,15 @@
 // how does TTypeScriot know here that the button const has a document object inside
 // why is it not complaining
-const button = document.querySelector('button')!;
+const button = document.querySelector('button');
 
 // the same for the event listener how it recognizes the event listener 
-button.addEventListener('click', () => {
-      console.log(`clicked`)
-});
+
+if(button) {
+      button.addEventListener('click', () => {
+            console.log(`clicked`)
+      });
+}
+
 
 
 // this is the magic of "lib" : [], inside the ts.config
