@@ -1,7 +1,7 @@
 class Department {
   private employeess: string[] = [];
 
-    constructor(private id: string, public name: string )  { //<-- this is a shortcut from the previously written code
+    constructor(private readonly id: string, public name: string )  { //<-- this is a shortcut from the previously written code
   
       }
 
