@@ -3,16 +3,14 @@ class Department {
     constructor(id, name) {
         this.id = id;
         this.name = name;
-        //   private readyonly id: string;
-        //   priovate name : string;
-        //   private is only accessible from inside the class not from outside
-        // but if we still want to be private but still accessible from the other classes instead of PRIVATE we use PROTECTED
         this.employeess = [];
         // this.id = id;
         // this.name = n;
+        // console.log(Department.fiscalYear) <== This is not accessible from the constructor or the newlycreate instances
+        // but there is a way if we want to acces it by calling the name of the Class in this case like (Department.fiscalYear)
     }
-    describe() {
-        //     console.log(`Department: ${this.name} with an id ${this.id}`);
+    static createEmployee(name) {
+        return { name: name };
     }
     addEmployee(employee) {
         this.employeess.push(employee);
@@ -22,6 +20,11 @@ class Department {
         console.log(this.employeess);
     }
 }
+//   private readyonly id: string;
+//   priovate name : string;
+//   private is only accessible from inside the class not from outside
+// but if we still want to be private but still accessible from the other classes instead of PRIVATE we use PROTECTED
+Department.fiscalYear = 2020;
 //even though the class is empty with the EXTENDS keyword we are gonna inherit everythig that class has
 // but when we want to get particular stuff we do it through the constructor and also by calling super() 
 class ITDepartment extends Department {
@@ -30,6 +33,9 @@ class ITDepartment extends Department {
         super(id, 'IT');
         this.admins = admins;
         this.admins = admins;
+    }
+    describe() {
+        console.log(`IT DEPARTMENT - ID ${this.id}`);
     }
 }
 class AccountingDepartment extends Department {
@@ -53,6 +59,9 @@ class AccountingDepartment extends Department {
         }
         this.addReport(value);
     }
+    describe() {
+        console.log(`IT ACCOUNTING DEPARTNEBT - ID ${this.id}`);
+    }
     addEmployee(name) {
         if (name === 'Max') {
             return;
@@ -67,6 +76,8 @@ class AccountingDepartment extends Department {
         console.log(this.reports);
     }
 }
+const employee1 = Department.createEmployee('joko');
+console.log(employee1, Department.fiscalYear);
 const it = new ITDepartment('d1', ['Jojo']);
 it.addEmployee('Max');
 it.addEmployee('Manu');
@@ -80,6 +91,7 @@ console.log(accounting.mostRecentReport); // <=== use get(getter)
 accounting.addEmployee(`Max`);
 accounting.addEmployee(`JovanAdmin`);
 accounting.addReport('Smthing went wrong...');
-accounting.printReports();
-accounting.printEmployeeInformation();
+accounting.describe();
+// accounting.printReports()
+// accounting.printEmployeeInformation()
 //# sourceMappingURL=app.js.map
