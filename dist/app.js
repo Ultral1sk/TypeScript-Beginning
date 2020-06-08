@@ -1,11 +1,12 @@
 "use strict";
 class Department {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
         this.employeess = [];
-        this.name = n;
     }
     describe() {
-        console.log(`Department: ${this.name}`);
+        console.log(`Department: ${this.name} with an id ${this.id}`);
     }
     addEmployee(employee) {
         this.employeess.push(employee);
@@ -15,7 +16,7 @@ class Department {
         console.log(this.employeess);
     }
 }
-const departmendAccounting = new Department(`accounting`);
+const departmendAccounting = new Department('d1', `accounting`);
 departmendAccounting.addEmployee('Max');
 departmendAccounting.addEmployee('Manu');
 // the class is still mutable from outside like this by accesing the property only

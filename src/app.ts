@@ -1,13 +1,12 @@
 class Department {
-  public name: string; // <-- public is default property to the key and it is also muatble from outside
   private employeess: string[] = [];
 
-    constructor( n: string ) {
-      this.name = n;
+    constructor(private id: string, public name: string )  { //<-- this is a shortcut from the previously written code
+  
       }
 
     describe(this : Department) {
-          console.log(`Department: ${this.name}`);
+          console.log(`Department: ${this.name} with an id ${this.id}`);
     }
 
     addEmployee(employee: string) {
@@ -21,7 +20,7 @@ class Department {
 }
 
 
-const departmendAccounting = new Department(`accounting`) 
+const departmendAccounting = new Department('d1',`accounting`) 
 departmendAccounting.addEmployee('Max')
 departmendAccounting.addEmployee('Manu')
 
@@ -32,3 +31,5 @@ departmendAccounting.addEmployee('Manu')
 
 departmendAccounting.describe()
 departmendAccounting.printEmployeeInformation();
+
+
