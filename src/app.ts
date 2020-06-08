@@ -1,19 +1,33 @@
-// how does TTypeScriot know here that the button const has a document object inside
-// why is it not complaining
-const button = document.querySelector('button');
+const hobbies = ["pcgames", "programing"];
+const activeHobbies = ["NBA"];
 
-// the same for the event listener how it recognizes the event listener 
+// console.log([...hobbies, ...activeHobbies])
 
-if(button) {
-      button.addEventListener('click', () => {
-            console.log(`clicked`)
-      });
+
+const person = {
+      firstName : 'Jovan',
+      age : 30
 }
 
+// const copiedPerson = {...person}
+// console.log(copiedPerson)
 
 
-// this is the magic of "lib" : [], inside the ts.config
-// in this case when nth is assigned it has some default options 
-// and those default depend on the target or which version of js we've specified inside the target
-// all es6 syntaxx will be supported and also all DOM API's 
-// if we outcoment the lib , we are losing the default settings and we need to specify on our own
+
+// accepting random number of arguments inside an array
+// const add = (...numbers : number[]) => {
+//       return numbers.reduce((curResult, curValue) => {
+//             return curResult + curValue
+//       }, 0 )
+// }
+
+
+// console.log(add(5,2,6,8))
+// or we can go with the TUPLE option by setting the arguments to fixed lenght and value
+// (...numbers : [number, number, number])
+
+
+// const [ hobbyOne, hobbyTwo, ...remainingHobies ] = hobbies
+// console.log(hobbyOne, hobbyTwo)
+
+const { firstName, age } = person
