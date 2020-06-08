@@ -35,8 +35,30 @@ class ITDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+      private lastReport: string;
+
+      // this is used if we want to get a property of the class encapsulate it and add extra logic to it
+      // in this case we take the private lastReport and we want to add extra logic whenever we acces it
+      get mostRecentReport() {
+            if(this.lastReport) {
+                  return this.lastReport;
+
+            }
+            throw new Error(`No report found.`);
+      }
+
+      // with this we do the same but instead of getting a property we can set a new property encapsulate it and add extralogic to it
+     
+      set mostRecentReport(value: string) {
+            if(!value){
+                  throw new Error(`Plase pass in a valid value`)
+            }
+            this.addReport(value);
+      }
+
       constructor( id: string, private reports: string[] ){
             super(id, 'Accounting');
+            this.lastReport = reports[0]
       }
 
       addEmployee(name : string) {
@@ -48,10 +70,12 @@ class AccountingDepartment extends Department {
 
       addReport( text: string) {
             this.reports.push(text);
+            this.lastReport = text
       }
 
       printReports() {
             console.log(this.reports)
+
       }
 }
 
@@ -66,6 +90,9 @@ console.log(it)
 
 
 const accounting = new AccountingDepartment('d2', []);
+accounting.mostRecentReport = `Your end report please`   // <=== use set(setter)
+console.log(accounting.mostRecentReport)                 // <=== use get(getter)
+
 accounting.addEmployee(`Max`);
 accounting.addEmployee(`JovanAdmin`);
 
