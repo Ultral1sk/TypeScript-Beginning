@@ -1,46 +1,26 @@
-interface AddFn {
-      (a: number, b: number) : number;
+// this is not an object created it is a TYPE this could have been created with INTERFACES
+type Admin = {
+      name : string;
+      privileges : string[];
+}
+//interface
+type Employee = {
+      name: string;
+      startDate: Date  // <- date is a type in Typescript
 }
 
-let add: AddFn
 
-add = (n1: number, n2: number) => {
-      return n1 + n2;
-}
+// now this result a new object type that must have both types
+type ElevatedEmployee = Admin & Employee
 
-interface Named {
-      readonly name?: string;
-      outputName? : string
-}
+//this is also valid
+// interface ElevatedEmployee extends Employee, Admin {}
+const e1: ElevatedEmployee = {
+      name: 'Max',
+      privileges: ['Create-Server'],
+      startDate: new Date,
+};
 
-interface Greetable extends Named {
-      greet(phrase: string) : void;
-}
-
-class Person implements Greetable {
-      name?: string;
-
-      constructor(n?: string) {
-            if(n) {
-                  this.name = n;
-            }
-      }
-
-      greet(phrase: string) {
-            if(this.name) {
-                  console.log(phrase + ' ' + this.name);
-            }
-            else { 
-                  console.log(`Hi`)
-            }
-      }
-}
-
-let user1: Greetable;
-
-user1 = new Person()
-
-user1.greet('Hi there I-am')
-
-
-
+type Combinable = string | number;
+type Numeric = number | boolean;
+type Universal = Combinable & Numeric 
