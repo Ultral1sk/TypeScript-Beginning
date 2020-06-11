@@ -21,10 +21,40 @@ function merge(objA, objB) {
     // function merge<T, U>( objA: object, objB: object ) {
     return Object.assign(objA, objB);
 }
-console.log(merge({ name: 'joko' }, { age: 5 }));
-const mergedObj = merge({ name: 'Max', hobbies: ["Sports"] }, { age: 29 });
+const mergedObj = merge({ name: 'Max', hobbies: ["Sports"] }, { age: 30 });
 const mergedObj2 = merge({ age: 10 }, { greetings: 'papa' });
 // typescript doesn't understand this because it doesn;t understand everyhthing
 // here generics can help us
-console.log(mergedObj.age);
+console.log(mergedObj.name, mergedObj.age);
+function countAndDescribe(element) {
+    let desciptionText = 'Got no value.';
+    if (element.length === 1) {
+        desciptionText = `Got 1 Element`;
+    }
+    else if (element.length > 1) {
+        desciptionText = `Got ${element.length} + elements`;
+    }
+    return [element, desciptionText];
+}
+console.log(countAndDescribe(["Jovan", 'Bora']));
+console.log(countAndDescribe([]));
+// console.log(countAndDescribe(10)) doesn't work
+function extractAndConvert(obj, key) {
+    return `Value : ${obj[key]}`;
+}
+console.log(extractAndConvert({ name: 'Jovan' }, 'name'));
+function createCourseGoal(title, description, date) {
+    // Partiual tells TypeSript that this is an object which in the end will be a CourseGoal
+    // And it says that all the properties inside the CourseGoal are optional
+    let courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal; // <- with this we are gonna say that this is a real course goal not a partial one
+}
+// locking the array , can't manipulate the array at all, and it is not limited only to array
+// can be usable  with objects or etc..
+const names = ["Jovan", "cs:go"];
+// names.push('N1GHTMARE');
+// names.pop();
 //# sourceMappingURL=app.js.map
